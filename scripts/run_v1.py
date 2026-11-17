@@ -129,6 +129,9 @@ def main() -> None:
             options.append(f"-Pbench.sides={session['sides']}")
         if session.get("cold"):
             options.append("-Pbench.cold=true")
+        if session["mods"]:
+            # The launch profiles regenerate their mods as a dependency, with the default count unless told
+            options.append(f"-Pbench.mods={session['mods']}")
         gradle(quench, ":bench:benchmark", *options)
         destination = out / f"{i:02d}-{session['name']}"
         collect.collect(report, destination, {

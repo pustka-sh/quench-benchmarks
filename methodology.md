@@ -114,4 +114,6 @@ Each criterion is reported as **met**, **not met** or **inconclusive**. Inconclu
 
 ## Changes after measuring
 
-None yet.
+**2026-11-17: the 50-mod sessions ran with 200 mods.** `run_v1.py` generated 50 mods, then started the benchmark without passing the mod count. The benchmark's launch profiles regenerate their mods as a build dependency, with the default count of 200. So on the first machine, sessions `01-client-startup-50` and `04-in-game-50` loaded 200 generated mods. Their `results.json` lists all 200 jars, with checksums, for every `-mods` configuration. Their data is kept and published, relabeled as 200-mod data in each `session.json`, with the original plan noted. The runner now passes the count to the benchmark too, and both sessions were run again with 50 mods. The 0-mod configurations in session 1 were unaffected.
+
+**2026-11-17: in-game session with no mods, re-run.** 11 of its 80 runs ended on the pause screen instead of in the world: `quench` 4 of 20, `fabric-optimized` 3, `vanilla` 2, `fabric` 2. All 11 started between 22:19 and 22:27 or at 22:34 local time (UTC−5), while someone was typing on the machine, and each new game window takes the keyboard focus. Two configurations exceed the 10% limit in the [exclusion rules](#exclusion-rules), so the session was run again, and both sessions are published. In-game with mods had at most 2 of 20 failures per configuration (at 22:38 and between 23:08 and 23:13, also while the machine was in use), which is within the limit.
